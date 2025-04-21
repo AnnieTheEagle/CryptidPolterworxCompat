@@ -7,17 +7,10 @@
 
 -- Take ownership calls
 SMODS.Back:take_ownership("b_cry_encoded", {
-	loc_txt = {
-		name = "Encoded Deck",
-		text = {
-			"Start with a {C:cry_code,T:j_cry_CodeJoker}Code Joker{}",
-			"Only {C:cry_code}Code Cards{} appear in shop",
-		}
-	},
 	apply = function(self)
-		G.GAME.joker_rate = 0
-		G.GAME.planet_rate = 0
-		G.GAME.tarot_rate = 0
+		G.GAME.joker_rate = 1
+		G.GAME.planet_rate = 1
+		G.GAME.tarot_rate = 1
 		G.GAME.code_rate = 1e100
 		G.E_MANAGER:add_event(Event({
 			func = function()
