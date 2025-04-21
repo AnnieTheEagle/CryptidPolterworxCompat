@@ -30,15 +30,14 @@ SMODS.Back:take_ownership("b_cry_encoded", {
 		}))
 	end,
 })
-SMODS.ConsumableType:take_ownership("cry_code", {
-    default = "c_cry_oboe",
-})
+
 SMODS.Consumable:take_ownership("c_cry_pointer", {
     loc_vars = function(self, info_queue, center)
         print("m")
         return {key = "jen_pointer", set = "Other"}
     end
 })
+
 SMODS.Consumable:take_ownership("c_cry_gateway", {
     can_use = function(self, card)
 		if (#SMODS.find_card("j_jen_saint") + #SMODS.find_card("j_jen_saint_attuned")) > 0 then
