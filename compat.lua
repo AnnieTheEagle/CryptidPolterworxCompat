@@ -31,12 +31,18 @@ SMODS.Back:take_ownership("b_cry_encoded", {
 	end,
 })
 
-SMODS.Consumable:take_ownership("c_cry_pointer", {
-    loc_vars = function(self, info_queue, center)
-        print("m")
-        return {key = "jen_pointer", set = "Other"}
-    end
-})
+Cryptid.pointerblistify("j_jen_kosmos") -- here as an example
+Cryptid.pointerblistifytype("rarity", "jen_wondrous")
+Cryptid.pointerblistifytype("rarity", "jen_extraordinary")
+Cryptid.pointerblistifytype("rarity", "jen_ritualistic")
+Cryptid.pointerblistifytype("rarity", "jen_transcendent")
+Cryptid.pointerblistifytype("rarity", "jen_omegatranscendent")
+Cryptid.pointerblistifytype("rarity", "jen_omnipotent")
+Cryptid.pointerblistifytype("rarity", "jen_miscellaneous")
+Cryptid.pointerblistifytype("rarity", "jen_junk")
+Cryptid.pointerblistifytype("set", "jen_omegaconsumable")
+
+Cryptid.pointeraliasify("j_jen_kosmos", "Kosmos") -- also here as an example, this will have to be done for every alias (won't let you create kosmos because of blacklist)
 
 SMODS.Consumable:take_ownership("c_cry_gateway", {
     can_use = function(self, card)
