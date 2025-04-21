@@ -1,0 +1,12 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 422
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS Cryptid "items/code.lua"]'''
+pattern = '''default = "c_cry_crash",'''
+position = "at"
+payload = '''default = "c_cry_oboe",'''
+match_indent = true
