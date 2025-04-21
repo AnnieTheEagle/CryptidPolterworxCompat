@@ -1,6 +1,7 @@
 -- Note: Jen's dependencies will also have to be updated to not display as incompatible.
 
 -- Things that are not yet included:
+-- single hand planets don't use the new colors
 -- Banned cards in challenges (I think these need a full update anyway)
 
 -- encoded handling
