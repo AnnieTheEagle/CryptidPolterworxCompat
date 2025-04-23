@@ -76,13 +76,14 @@ match_indent = true
 [[patches]]
 [patches.pattern]
 target = '''=[SMODS Cryptid "items/exotic.lua"]'''
-pattern = '''return true
+pattern = '''end
+				return true
 			end,
-		}))
-		delay(0.6)'''
+		}))'''
 position = "after"
 payload = '''end'''
 match_indent = true
+
 
 
 # no ghost
