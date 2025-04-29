@@ -49,6 +49,13 @@ function SMODS.current_mod.process_loc_text()
     }
 end
 
+local uhtr = update_hand_text
+function update_hand_text(config, vals)
+	if not vals.colour then
+		vals.colour = G.C.UI.TEXT_DARK
+	end
+	uhtr(config, vals)
+end
 
 
 -- a guide on what these new functions do is in Cryptid/items/pointer.lua
