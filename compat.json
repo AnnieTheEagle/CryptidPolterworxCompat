@@ -1,6 +1,7 @@
 {
     "id": "cac",
-    "name": "Cryptid/Almanac Compat",
+    "version": "1",
+    "name": "Cryptid and Polterworx Compat",
     "author": ["MathIsFun_"],
     "description": "Almanac compatibility for newer Cryptid versions",
     "prefix": "cac",

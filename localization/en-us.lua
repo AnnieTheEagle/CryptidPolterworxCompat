@@ -1,5 +1,12 @@
 return {
     descriptions = {
+        Mod = { 
+            cac = {
+                display_name = "test",
+                name = "Cryptid and Polterworx Compat",
+                text = {"Polterworx compatibility for newer Cryptid versions"},
+            }
+        },
         Back = {
             b_cry_encoded = {
 				name = "Encoded Deck",

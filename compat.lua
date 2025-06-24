@@ -2,7 +2,11 @@
 
 -- Things that are not yet included:
 -- single hand planets don't use the new colors
--- Banned cards in challenges (I think these need a full update anyway)
+if SMODS.current_mod then
+	SMODS.current_mod.description_loc_vars = function()
+    	return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
+	end
+end
 
 -- encoded handling
 SMODS.Back:take_ownership("b_cry_encoded", {
