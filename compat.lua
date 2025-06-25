@@ -34,6 +34,58 @@ SMODS.Back:take_ownership("b_cry_encoded", {
 	end,
 })
 
+-- Restore old Gateway check for 'The Saint'
+SMODS.Consumable:take_ownership("cry_gateway", {
+	can_use = function(self, card)
+		-- If we find a Saint or Saint Attuned, we only check if we have room.
+		if (#SMODS.find_card("j_jen_saint") + #SMODS.find_card("j_jen_saint_attuned")) > 0 then
+			return #G.jokers.cards < G.jokers.config.card_limit
+		else
+			-- Otherwise, don't allow use if everything is eternal and there is no room
+			return #Cryptid.advanced_find_joker(nil, nil, nil, { "eternal" }, true, "j") < G.jokers.config.card_limit
+		end
+	end,
+	use = function(self, card, area, copier)
+		-- Check if have a 'Saint' or 'Saint (Attuned)', if we do, then we don't destroy any jokers
+		if (#SMODS.find_card("j_jen_saint") + #SMODS.find_card("j_jen_saint_attuned")) <= 0 then
+			local deletable_jokers = {}
+			for k, v in pairs(G.jokers.cards) do
+				if not v.ability.eternal then
+					deletable_jokers[#deletable_jokers + 1] = v
+				end
+			end
+			local _first_dissolve = nil
+			G.E_MANAGER:add_event(Event({
+				trigger = "before",
+				delay = 0.75,
+				func = function()
+					for k, v in pairs(deletable_jokers) do
+						if v.config.center.rarity == "cry_exotic" then
+							check_for_unlock({ type = "what_have_you_done" })
+						end
+						v:start_dissolve(nil, _first_dissolve)
+						_first_dissolve = true
+					end
+					return true
+				end,
+			}))
+		end
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.4,
+			func = function()
+				play_sound("timpani")
+				local card = create_card("Joker", G.jokers, nil, "cry_exotic", nil, nil, nil, "cry_gateway")
+				card:add_to_deck()
+				G.jokers:emplace(card)
+				card:juice_up(0.3, 0.5)
+				return true
+			end,
+		}))
+		delay(0.6)
+	end,
+}, true)
+
 
 Cryptid_config.gameset_toggle = false -- prevents changing gamesets. Easy.
 
